@@ -3,19 +3,23 @@ import Counter from './components/Counter'
 
 import WallPaper from './assets/wallpaper.jpg'
 
+import useCountdown from './hook/useCountdown'
+
 
 import './App.css'
 
 function App() {
+  const [day, hour, minute, second] = useCountdown("Jan 1, 2026 00:00:00")
+
   return (
     <div className='App' style={{ backgroundImage: `url(${WallPaper})` }}>
       <div className="container">
-        <Title title="Contagem regressiva para 2023" />
+        <Title title="Contagem regressiva para 2026" />
         <div className="countdown-container">
-          <Counter title="Dias" number={2} />
-          <Counter title="Horas" number={2} />
-          <Counter title="Minutos" number={2} />
-          <Counter title="Segundos" number={2} />
+          <Counter title="Dias" number={day} />
+          <Counter title="Horas" number={hour} />
+          <Counter title="Minutos" number={minute} />
+          <Counter title="Segundos" number={second} />
         </div>
       </div>
     </div>
