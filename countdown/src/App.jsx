@@ -14,7 +14,7 @@ function App() {
         <div className="countdown-container">
           <Counter title="Dias" number={2} />
           <Counter title="Horas" number={2} />
-          <Counter title="Minutes" number={2} />
+          <Counter title="Minutos" number={2} />
           <Counter title="Segundos" number={2} />
         </div>
       </div>
