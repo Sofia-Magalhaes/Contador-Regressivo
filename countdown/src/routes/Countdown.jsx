@@ -21,12 +21,12 @@ const Countdown = () => {
 
     return (
         <>
-            <Title title={eventTitle} />
+            <Title title={eventTitle} eventColour={eventColour}/>
             <div className="countdown-container">
-                <Counter title="Dias" number={day} />
-                <Counter title="Horas" number={hour} />
-                <Counter title="Minutos" number={minute} />
-                <Counter title="Segundos" number={second} />
+                <Counter title="Dias" number={day} eventColour={eventColour} />
+                <Counter title="Horas" number={hour} eventColour={eventColour} />
+                <Counter title="Minutos" number={minute} eventColour={eventColour} />
+                <Counter title="Segundos" number={second} eventColour={eventColour} />
             </div>
         </>
     )

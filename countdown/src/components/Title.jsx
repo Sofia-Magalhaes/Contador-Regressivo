@@ -1,8 +1,10 @@
 import './Title.css'
 
-const Title = ({title}) => {
+const Title = ({title, eventColour}) => {
   return (
-    <div className='title'>{title}</div>
+    <h1 className="title" style={{color: eventColour}}>
+      {title}
+    </h1>
   )
 }
 
