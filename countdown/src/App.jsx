@@ -1,8 +1,24 @@
+import Title from './components/Title'
+import Counter from './components/Counter'
+
+import WallPaper from './assets/wallpaper.jpg'
+
+
 import './App.css'
 
 function App() {
   return (
-    <div className='App'>Countdown</div>
+    <div className='App' style={{ backgroundImage: `url(${WallPaper})` }}>
+      <div className="container">
+        <Title title="Contagem regressiva para 2023" />
+        <div className="countdown-container">
+          <Counter title="Dias" number={2} />
+          <Counter title="Horas" number={2} />
+          <Counter title="Minutes" number={2} />
+          <Counter title="Segundos" number={2} />
+        </div>
+      </div>
+    </div>
   )
 }
 
