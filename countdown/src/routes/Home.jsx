@@ -12,26 +12,43 @@ const Home = () => {
     const [image, setImage] = useState('')
     const [colour, setColour] = useState('')
 
-    const {setEvent} = useContext(CountdownContext)
+
+    const [imageBase64, setImageBase64] = useState(null);
+
+    const { setEvent } = useContext(CountdownContext)
 
     const navigate = useNavigate()
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
+    const handleImageChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onloadend = () => {
+                setImageBase64(reader.result);
+            };
+        }
+    };
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        // O objeto do evento agora usa `imageBase64` em vez de uma URL
         const eventObject = {
             title,
             date,
-            image,
+            image: imageBase64, // AQUI está a grande mudança!
             colour,
-        }
+        };
 
+        // Guarda o objeto do evento no estado (ou contexto)
+        // A página "/countdown" irá ler este objeto para exibir os dados.
         setEvent(eventObject);
-        console.log(eventObject);
-        
+        console.log("Objeto do evento a ser enviado:", eventObject);
 
-        navigate("/countdown")
-    }
+        navigate("/countdown");
+    };
+
 
     return (
         <div className='home'>
@@ -57,13 +74,19 @@ const Home = () => {
                     />
                 </label>
                 <label>
-                    <span>Imagem: </span>
+                    <label htmlFor="image-upload" style={{ cursor: 'pointer' }}>
+                        <span>Imagem (do seu computador):</span>
+                    </label>
                     <input
-                        type="text"
+                        id="image-upload"
+                        type="file"
                         name="image"
-                        placeholder='Insira a url da imagem'
-                        onChange={(e) => setImage(e.target.value)}
+                        accept="image/*"
+                        onChange={handleImageChange}
                     />
+                    {imageBase64 && (
+                        <img src={imageBase64} alt="Pré-visualização" style={{ maxWidth: '100%', borderRadius: '8px', marginTop: '10px', border: '1px solid #ddd' }} />
+                    )}
                 </label>
                 <label>
                     <span>Cor do tema: </span>

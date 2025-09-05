@@ -3,3 +3,10 @@
     margin-bottom: 1rem;
     font-size: 2.4rem;
 }
+
+.title p{
+    text-align: center;
+    font-size: 1.4rem;
+    color: rgba(43, 36, 43, 0.8);
+    padding-top: 1rem;
+}
